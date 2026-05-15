@@ -1,0 +1,19 @@
+# Claude Code のローカル設定・履歴
+.claude/
+
+# macOS の自動生成ファイル
+.DS_Store
+
+# 環境変数（APIキーなど機密情報）
+.env
+.env.local
+
+# Node.js の依存パッケージ（再インストール可能なので管理不要）
+node_modules/
+
+# ビルド成果物
+dist/
+build/
+
+# ログファイル
+*.log
