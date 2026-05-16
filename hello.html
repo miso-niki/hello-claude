@@ -48,6 +48,12 @@
   button:active {
     transform: scale(0.97);
   }
+  .buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   footer {
     position: absolute;
     bottom: 1.5rem;
@@ -58,7 +64,38 @@
 </head>
 <body>
   <h1>初コミット達成！</h1>
-  <button type="button" onclick="document.querySelector('h1').textContent='ボタンが押されました！'">押してみる</button>
+  <div class="buttons">
+    <button type="button" id="toggleBtn">文字を切り替え</button>
+    <button type="button" id="colorBtn">色を変える</button>
+    <button type="button" id="countBtn">カウントアップ (0)</button>
+  </div>
   <footer>2026 by Yoshiaki Nitta</footer>
+  <script>
+    const h1 = document.querySelector('h1');
+    const originalText = h1.textContent;
+    const toggledText = 'ボタンが押されました！';
+
+    document.getElementById('toggleBtn').addEventListener('click', () => {
+      h1.textContent = h1.textContent === originalText ? toggledText : originalText;
+    });
+
+    const colors = ['#ff004c', '#ff8a00', '#ffee00', '#14ff00', '#00d4ff', '#6a00ff', '#ff00c8'];
+    let colorIndex = 0;
+    document.getElementById('colorBtn').addEventListener('click', () => {
+      colorIndex = (colorIndex + 1) % colors.length;
+      const c = colors[colorIndex];
+      h1.style.background = 'none';
+      h1.style.webkitTextFillColor = c;
+      h1.style.color = c;
+      h1.style.animation = 'none';
+    });
+
+    const countBtn = document.getElementById('countBtn');
+    let count = 0;
+    countBtn.addEventListener('click', () => {
+      count++;
+      countBtn.textContent = `カウントアップ (${count})`;
+    });
+  </script>
 </body>
 </html>
